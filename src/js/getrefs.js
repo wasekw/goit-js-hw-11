@@ -1,0 +1,9 @@
+export default function getRefs () {
+  return {
+   searchForm: document.querySelector('#search-form'),
+   gallery: document.querySelector('.gallery'),
+   loadMoreBtn: document.querySelector('.load-more'),
+   inputForm: document.querySelector('.search-form > input'),
+   searchBtn: document.querySelector('.search-form > button'),
+  }
+}
