@@ -68,7 +68,9 @@ module.exports={version:"0.24.0"};
 module.exports=require("./lib/axios");
 },{"./lib/axios":"nUiQ"}],"A3wg":[function(require,module,exports) {
 "use strict";function e(){return{searchForm:document.querySelector("#search-form"),gallery:document.querySelector(".gallery"),loadMoreBtn:document.querySelector(".load-more"),inputForm:document.querySelector(".search-form > input"),searchBtn:document.querySelector(".search-form > button")}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=e;
-},{}],"Focm":[function(require,module,exports) {
-"use strict";require("./css/styles.css");var e=require("notiflix/build/notiflix-notify-aio"),t=s(require("axios")),r=s(require("./js/getrefs"));function s(e){return e&&e.__esModule?e:{default:e}}const i=(0,r.default)();function n(e){console.log(e.currentTarget),e.preventDefault();const t=i.inputForm.value;console.log(t)}i.searchBtn.addEventListener("submit",n);
-},{"./css/styles.css":"krre","notiflix/build/notiflix-notify-aio":"MeeU","axios":"dZBD","./js/getrefs":"A3wg"}]},{},["Focm"], null)
-//# sourceMappingURL=/goit-js-hw-11/src.77cc0e75.js.map
+},{}],"o7V2":[function(require,module,exports) {
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var e=t(require("axios"));function t(e){return e&&e.__esModule?e:{default:e}}const a="https://pixabay.com/api/";function r(t){const r=new URLSearchParams({key:"24307616-b0118d635ae4446a17d5d0140",q:t,image_type:"photo",orientation:"horizontal",safesearch:!0,page:1,per_page:40});return e.default.get(`${a}?${r}`)}var o={fetchImage:r};exports.default=o;
+},{"axios":"dZBD"}],"Focm":[function(require,module,exports) {
+"use strict";require("./css/styles.css");var e=require("notiflix/build/notiflix-notify-aio"),t=i(require("axios")),r=i(require("./js/getrefs")),s=i(require("./js/fetchimage"));function i(e){return e&&e.__esModule?e:{default:e}}const u=(0,r.default)();function n(e){e.preventDefault();const t=e.currentTarget.elements.searchQuery.value;s.default.fetchImage(t).then(console.log)}u.searchForm.addEventListener("submit",n);
+},{"./css/styles.css":"krre","notiflix/build/notiflix-notify-aio":"MeeU","axios":"dZBD","./js/getrefs":"A3wg","./js/fetchimage":"o7V2"}]},{},["Focm"], null)
+//# sourceMappingURL=/goit-js-hw-11/src.5c8df71e.js.map
