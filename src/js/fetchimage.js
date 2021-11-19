@@ -1,23 +1,39 @@
 import axios from 'axios';
-const BASE_URL = 'https://pixabay.com/api/';
 
-function fetchImage(query) {
+export default class API {
+  constructor() {
+    this.page = 1;
+    this.totalHits = 0;
+    this.searchQuery = '';
+  }
 
-  const searchParams = new URLSearchParams({
-    key: '24307616-b0118d635ae4446a17d5d0140',
-    q: query,
-    image_type: 'photo',
-    orientation: 'horizontal',
-    safesearch: true,
-    page: 1,
-    per_page: 40,
-  });
-  console.log(axios.get(`${BASE_URL}?${searchParams}`));
-  return axios.get(`${BASE_URL}?${searchParams}`);
-};
+    async  fetchImage() {
+      const BASE_URL = 'https://pixabay.com/api/';
+      const KEY = '?key=24307616-b0118d635ae4446a17d5d0140';
 
 
-export default { fetchImage };
+    const images = await axios.get(
+            `${BASE_URL}${KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`);
+
+      this.totalHits = images.data.totalHits;
+
+      return images;
+    }
+
+  get query () {
+    return this.searchQuery;
+  }
+
+  set query (newQuery) {
+    this.searchQuery = newQuery;
+  }
+
+  incrementPage() {
+        this.page += 1;
+ }
+}
+
+
 
 
 // Список параметров строки запроса которые тебе обязательно необходимо указать:

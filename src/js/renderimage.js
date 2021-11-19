@@ -24,12 +24,21 @@ function getImage(images) {
   </div>`
   }).join('');
 
-  refs.gallery.innerHTML = imageFind;
+  refs.gallery.insertAdjacentHTML('beforeend', imageFind);
 };
+
+function hideLoadMoreBtn() {
+  refs.loadMoreBtn.classList.add('is-hidden');
+};
+
+function showLoadMoreBtn () {
+  refs.loadMoreBtn.classList.remove('is-hidden');
+}
+
 
 function clearImage () {
   refs.gallery.innerHTML = '';
 };
 
 
-export default { getImage, clearImage };
+export default { getImage, clearImage, hideLoadMoreBtn, showLoadMoreBtn };
