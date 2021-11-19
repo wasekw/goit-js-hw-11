@@ -1,10 +1,6 @@
 import axios from 'axios';
 const BASE_URL = 'https://pixabay.com/api/';
 
-
-
-
-
 function fetchImage(query) {
 
   const searchParams = new URLSearchParams({
@@ -16,7 +12,7 @@ function fetchImage(query) {
     page: 1,
     per_page: 40,
   });
-
+  console.log(axios.get(`${BASE_URL}?${searchParams}`));
   return axios.get(`${BASE_URL}?${searchParams}`);
 };
 
