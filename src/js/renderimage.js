@@ -1,11 +1,20 @@
 import getRefs  from "./getrefs";
-
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 const refs = getRefs();
 
 function getImage(images) {
-  const imageFind = images.data.hits.map(({ webformatURL, tags, likes, views, comments, downloads }) => {
-    return `
-  <div class="photo-card">
+
+  let markup = '';
+
+  if (images.data.hits.length === 0) {
+    Notify.failure("Sorry, there are no images matching your search query. Please try again.");
+    hideLoadMoreBtn();
+    return markup;
+  }
+
+    markup = images.data.hits.map(({ webformatURL, tags, likes, views, comments, downloads, largeImageURL }) => {
+    return `<div class="photo-card">
+    <a class="gallery-item" href="${largeImageURL}">
         <img src="${webformatURL}" alt="${tags}" loading="lazy"/>
       <div class="info">
             <p class="info-item">
@@ -21,10 +30,11 @@ function getImage(images) {
               <b>Downloads</b>${downloads}
             </p>
       </div>
+    </a>
   </div>`
   }).join('');
 
-  refs.gallery.insertAdjacentHTML('beforeend', imageFind);
+  return markup;
 };
 
 function hideLoadMoreBtn() {
@@ -36,9 +46,4 @@ function showLoadMoreBtn () {
 }
 
 
-function clearImage () {
-  refs.gallery.innerHTML = '';
-};
-
-
-export default { getImage, clearImage, hideLoadMoreBtn, showLoadMoreBtn };
+export default { getImage, hideLoadMoreBtn, showLoadMoreBtn };
