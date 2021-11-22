@@ -45,5 +45,4 @@ function showLoadMoreBtn () {
   refs.loadMoreBtn.classList.remove('is-hidden');
 }
 
-
 export default { getImage, hideLoadMoreBtn, showLoadMoreBtn };
